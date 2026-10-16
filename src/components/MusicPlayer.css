@@ -1,0 +1,72 @@
+.music-btn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 8px 8px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 6px 20px rgba(224, 68, 126, 0.22);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #b0547e;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.music-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(224, 68, 126, 0.32);
+}
+
+.music-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.music-btn__disc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #ff9dbb, #e0447e, #c3a4ff, #ff9dbb);
+  color: #ffffff;
+  font-size: 1.15rem;
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.55);
+}
+
+.music-btn__disc--spin {
+  animation: discSpin 3.2s linear infinite;
+}
+
+@keyframes discSpin {
+  to { transform: rotate(360deg); }
+}
+
+.music-btn__label {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .music-btn__label {
+    display: none;
+  }
+  .music-btn {
+    padding: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-btn__disc--spin {
+    animation: none !important;
+  }
+}

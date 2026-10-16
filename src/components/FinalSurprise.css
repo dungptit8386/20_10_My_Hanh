@@ -1,0 +1,157 @@
+.finale {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 22px;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(180deg, #2b2150 0%, #3d2f6b 45%, #5a3f7a 100%);
+  border-radius: 40px 40px 0 0;
+}
+
+.finale__stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.finale__star {
+  position: absolute;
+  color: #ffffff;
+  opacity: 0.8;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+  animation: starTwinkle 2.8s ease-in-out infinite;
+}
+
+.finale__glow-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.finale__glow-hearts span {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.55;
+  filter: drop-shadow(0 0 14px rgba(255, 157, 187, 0.8));
+  animation: glowFloat 5s ease-in-out infinite;
+}
+
+@keyframes glowFloat {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.4; }
+  50% { transform: translateY(-22px) scale(1.15); opacity: 0.75; }
+}
+
+.finale__content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+}
+
+.finale__title {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 8vw, 3.6rem);
+  line-height: 1.15;
+  color: #ffe3f0;
+  text-shadow: 0 0 24px rgba(255, 157, 187, 0.6);
+  margin-bottom: 18px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.finale--in .finale__title {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.finale__sub {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 4.4vw, 1.3rem);
+  font-weight: 500;
+  color: #e8d4ff;
+  line-height: 1.6;
+  margin-bottom: 34px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
+}
+
+.finale--in .finale__sub {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.finale__btn {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: clamp(1rem, 4.6vw, 1.15rem);
+  color: #7d4a68;
+  padding: 15px 32px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffd9e8 0%, #ffb3d0 100%);
+  box-shadow: 0 10px 28px rgba(255, 157, 187, 0.4);
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: btnPulse 2.2s ease-in-out infinite;
+}
+
+.finale__btn:hover {
+  transform: translateY(-3px) scale(1.04);
+}
+
+.finale__btn--ghost {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffe3f0;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: none;
+  animation: none;
+  margin-top: 18px;
+}
+
+.finale__hug {
+  animation: fadeUp 0.6s ease both;
+}
+
+.finale__hug-text {
+  font-family: var(--font-script);
+  font-size: clamp(1.5rem, 7vw, 2.4rem);
+  color: #ffd9e8;
+  text-shadow: 0 0 20px rgba(255, 157, 187, 0.7);
+  margin-bottom: 8px;
+}
+
+/* Bung trái tim */
+.finale__burst {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.finale__burst-heart {
+  position: absolute;
+  bottom: -40px;
+  will-change: transform, opacity;
+  animation-name: burstUp;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  animation-fill-mode: both;
+}
+
+.finale__burst-heart--0 { filter: drop-shadow(0 0 8px rgba(255, 120, 160, 0.8)); }
+.finale__burst-heart--1 { filter: drop-shadow(0 0 8px rgba(255, 160, 190, 0.8)); }
+.finale__burst-heart--2 { filter: drop-shadow(0 0 8px rgba(230, 120, 200, 0.8)); }
+
+@keyframes burstUp {
+  0% { transform: translateY(0) scale(0.4) rotate(0deg); opacity: 0; }
+  12% { opacity: 1; }
+  100% { transform: translateY(-108svh) scale(1.15) rotate(24deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finale__star, .finale__glow-hearts span, .finale__btn { animation: none !important; }
+  .finale__title, .finale__sub { transition: none; opacity: 1; transform: none; }
+}

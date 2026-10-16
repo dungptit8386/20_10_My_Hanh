@@ -1,0 +1,28 @@
+.float-hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.float-hearts__item {
+  position: absolute;
+  bottom: -40px;
+  opacity: 0;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) translateX(0) scale(0.7); opacity: 0; }
+  10% { opacity: 0.5; }
+  50% { transform: translateY(-50svh) translateX(18px) scale(1); opacity: 0.4; }
+  100% { transform: translateY(-105svh) translateX(-14px) scale(0.85); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-hearts { display: none; }
+}

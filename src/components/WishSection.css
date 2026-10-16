@@ -1,0 +1,109 @@
+.wishes {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 22px 72px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.wishes__glow {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(720px, 92vw);
+  height: 320px;
+  background: radial-gradient(ellipse at center, rgba(255, 157, 187, 0.45) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.wishes__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+}
+
+.wishes__title {
+  font-family: var(--font-script);
+  font-size: clamp(2.1rem, 7.5vw, 4.4rem);
+  line-height: 1.15;
+  color: #7d4a68;
+  min-height: 1.2em;
+  text-shadow: 0 2px 18px rgba(255, 157, 187, 0.4);
+}
+
+.wishes__caret {
+  display: inline-block;
+  width: 3px;
+  height: 0.95em;
+  margin-left: 4px;
+  vertical-align: -0.08em;
+  background: #e0447e;
+  border-radius: 2px;
+  animation: caretBlink 0.9s steps(2, start) infinite;
+}
+
+@keyframes caretBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.wishes__sub {
+  margin-top: 22px;
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 4.4vw, 1.5rem);
+  font-weight: 500;
+  color: #96587c;
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.wishes__sub--show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wishes__sub strong {
+  color: #e0447e;
+  font-family: var(--font-script);
+  font-weight: 700;
+  font-size: 1.25em;
+  letter-spacing: 0.02em;
+}
+
+.wishes__hearts {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 120px;
+  pointer-events: none;
+}
+
+.wishes__hearts span {
+  position: absolute;
+  bottom: 0;
+  font-size: 1.5rem;
+  opacity: 0;
+}
+
+.wishes__hearts--show span {
+  animation: floatHeart 3.6s ease-in-out infinite;
+}
+
+@keyframes floatHeart {
+  0% { opacity: 0; transform: translateY(0) scale(0.7); }
+  25% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-140px) scale(1.15); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wishes__caret { animation: none; }
+  .wishes__hearts--show span { animation: none; opacity: 0.5; }
+}

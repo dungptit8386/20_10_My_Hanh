@@ -1,0 +1,30 @@
+.petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  overflow: hidden;
+}
+
+.petals__item {
+  position: absolute;
+  top: -40px;
+  background: radial-gradient(ellipse at 30% 30%, #ffd9e8 0%, #ff9dbb 60%, #ff8fb1 100%);
+  border-radius: 70% 30% 60% 40% / 60% 40% 60% 40%;
+  opacity: 0;
+  animation-name: petalFall;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes petalFall {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  8% { opacity: 0.55; }
+  50% { transform: translateY(52svh) translateX(var(--sway, 40px)) rotate(200deg); opacity: 0.45; }
+  100% { transform: translateY(108svh) translateX(calc(var(--sway, 40px) * -0.4)) rotate(420deg); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .petals { display: none; }
+}
